@@ -21,18 +21,18 @@ subject = '/finance'
 # 连接mongoDB 数据库
 mongoDB = pymg.MongoClient("mongodb://localhost:27017/")
 # 选择数据库
-stock = mongoDB['isp']
+db_stock = mongoDB['isp']
 # 财报集合
-finance = stock['finance']
+finance = db_stock['finance']
 # 股票基本信息集合
-stockList = stock['list']
-# 从我们爬取的股票列表中 选出一些来爬取相应的财务报表
-# marketType =0是沪市股票 =1是深市股票 =6是科创股票
-# 如果循环MongoDB的游标 加入新参数no_cursor_timeout=True 可以无限超时使用游标
-stocks = stockList.find({'marketType': 1}, {'code': 1, 'name': 1})
+stockList = db_stock['list']
+
 stockArray = []
-for stock in stocks:
-    stockArray.append({'code': stock['code'], 'name': stock['name']})
+# 深市 沪市
+doc1 = stockList.find({'marketType': {'$in': [0, 1, 6]}})
+for z in doc1:
+    stockArray.append({'code': z['code'], 'name': z['name']});
+# {'code': z['code'], 'name': z['name']}
 
 # 启动浏览器 准备爬取信息
 browser = launchChrome()

@@ -47,7 +47,7 @@ for a0 in a0s:
 
 myclient = pmg.MongoClient("mongodb://localhost:27017/")
 # 锁定stock库
-db_stock = myclient['stock']
+db_stock = myclient['isp']
 # 指定名为list的MongoDB集合
 col_list = db_stock['list']
 
