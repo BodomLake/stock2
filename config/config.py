@@ -5,7 +5,7 @@ def dbConnInfo(user='root', password='rex123456', host='127.0.0.1', port='3306',
     return 'mysql+mysqlconnector://' + user + ':' + password + '@' + host + ':' + port + '/' + schema + '?' + args
 
 
-driverpath = r'D:\Python37\Lib\site-packages\selenium\webdriver\chrome\chromedriver83.0.4103.exe'
+driverpath = r'D:\Python37\Lib\site-packages\selenium\webdriver\chrome\chromedriver103.0.5060.24.exe'
 
 phoneHead = '--user-agent=Mozilla/5.0 (iPad; CPU OS 5_0 like Mac OS X) ' \
             'AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3'

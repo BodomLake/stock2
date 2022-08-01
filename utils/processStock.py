@@ -14,12 +14,15 @@ def processStock(broswer, url, stockCode, stockName):
     print(stockName, '[', stockCode, ']', ':Url-Request Time Cost', time.time() - time_request, 's')
     # 开始计时
     time_start = time.time()
+
     # 切换iframe 以保证准确定位
-    try:
-        broswer.switch_to.frame('dataifm')
-    except Exception as ex:
-        print(ex)
-        return {};
+    #  http://basic.10jqka.com.cn 这个地址比较干净，没有那么多<frame>，根本不需要定位frame
+    # 如果是 http://stockpage.10jqka.com.cn/ 就有至少3个<frame>，需要定位frame，否者无法找到指定的 #document.body
+    # try:
+    #     broswer.switch_to.frame('dataifm')
+    # except Exception as ex:
+    #     print(ex)
+    #     return {};
     # 获取财务报表所有的表的类型
     sideNav = broswer.find_elements_by_xpath('//*[@class="newTab"]/li')
 

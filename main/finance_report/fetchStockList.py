@@ -72,9 +72,9 @@ for market, url in dictOfStock.items():
         # 代码为非数字型的数字型代码都默认为0存入数据库
 
         # 创建股票的对象
-        data = {"code": stockCode, "name": stockName, "market": market, "marketType": marketType}
+        data = {"code": stockCode, "name": stockName, "market": market, "marketType": marketType, "archived": False}
         # 不用ObjectId 使用
-        # data = {"_id": stockId, "code": stockCode, "name": stockName, "market": market, "marketType": marketType}
+        # data = {"_id": stockId, "code": stockCode, "name": stockName, "market": market, "marketType": marketType, "archived": 0}
 
         # 堆入列表中
         dataList.append(data)
